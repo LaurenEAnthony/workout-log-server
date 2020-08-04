@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 // Create
-router.post("/create", function (req, res) {
+router.post("/user", function (req, res) {
   User.create({
     username: req.body.username,
     passwordhash: bcrypt.hashSync(req.body.passwordhash, 13),

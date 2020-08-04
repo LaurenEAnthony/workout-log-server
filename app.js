@@ -11,10 +11,10 @@ sequelize.sync();
 
 app.use(express.json());
 
-app.use("/user", user);
+app.use("/api", user);
 
 app.use(require("./middleware/validate-session"));
-app.use("/log", workoutLog);
+app.use("/api/log", workoutLog);
 
 app.listen(3000, function () {
   console.log("App is listening on port 3000");

@@ -5,7 +5,7 @@ let validateSession = require("../middleware/validate-session");
 const Log = require("../db").import("../models/log");
 
 // Create Log
-router.post("/create", validateSession, (req, res) => {
+router.post("/", validateSession, (req, res) => {
   const workoutLog = {
     description: req.body.description,
     definition: req.body.definition,
@@ -36,7 +36,7 @@ router.get("/:id", validateSession, function (req, res) {
 });
 
 // Update
-router.put("/update/:id", validateSession, function (req, res) {
+router.put("/:id", validateSession, function (req, res) {
   const updateLog = {
     description: req.body.description,
     definition: req.body.definition,
@@ -51,7 +51,7 @@ router.put("/update/:id", validateSession, function (req, res) {
 });
 
 // Delete
-router.delete("/delete/:id", validateSession, function (req, res) {
+router.delete("/:id", validateSession, function (req, res) {
   const query = { where: { id: req.params.id, owner: req.user.id } };
   Log.destroy(query)
     .then(() => res.status(200).json({ message: "Log deleted." }))
